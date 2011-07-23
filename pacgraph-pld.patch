@@ -1,0 +1,21 @@
+--- pacgraph~	2011-07-18 03:36:21.000000000 +0300
++++ pacgraph	2011-07-23 11:13:13.000000000 +0300
+@@ -935,7 +935,7 @@
+     return subp.communicate()[0].decode().split('\n')
+ 
+ def parse():
+-    default_action = 'autodetect'
++    default_action = 'redhat'
+     parser = optparse.OptionParser(description='Produces two files, pacgraph.svg and pacgraph.png.  Colors should be entered as hex values like "#ffffff".  SVG named colors may also work, see http://en.wikipedia.org/wiki/Web_colors .  Packages listed in the args are highlighted.')
+     parser.add_option('-s', '--svg', dest='svg_only', action='store_true', default=False,
+             help='Produce the SVG but do not attempt to rasterize it.')
+@@ -1026,6 +1026,9 @@
+     if exists('ipkg'):
+         print ('Autodetected ipkg.')
+         return 'ipkg'
++    if exists('poldek'):
++        print('Autodetected PLD.')
++        return 'redhat'
+     if any(map(exists, 'dpkg apt aptitude'.split())):
+         print ('Autodetected deb.')
+         return 'debian'
