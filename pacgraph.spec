@@ -28,7 +28,7 @@ Interactive tk based GUI for %{name}
 
 %prep
 %setup -qn keenerd-%{name}-%{commit}
-%patch0 -p0
+%patch -P0 -p0
 
 %build
 
